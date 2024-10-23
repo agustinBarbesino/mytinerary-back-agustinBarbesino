@@ -5,6 +5,7 @@ const error_404_handler = (error, req, res, next) => {
             message: `ruta no encontrada - Not Found - Petición con metodo ${req.method} y ruta ${req.url}`
         })
     }
+    next()
 }
 
 export default error_404_handler
