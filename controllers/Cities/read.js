@@ -1,4 +1,5 @@
-import City from "../../models/City.js";
+import City from "../../models/City.js"
+import "../../models/Itinerary.js"
 
 let allCities = async (req, res, next) => {
     try {
@@ -9,7 +10,7 @@ let allCities = async (req, res, next) => {
             query.name = {$regex: '^'+name+'.*', $options: 'i'}
         }
 
-        let all = await City.find(query)
+        let all = await City.find(query).populate('itineraries').exec()  
         return res.status(200).json({
             response: all
         })
@@ -21,7 +22,7 @@ let allCities = async (req, res, next) => {
 let cityById = async (req, res, next) => {
     try {
         let idparam = req.params.id
-        let all = await Store.find({id : idparam})
+        let all = await City.find({id : idparam})
         return res.status(200).json({
             response: all
         })

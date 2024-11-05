@@ -11,4 +11,5 @@ npm i cors
 npm i morgan
 
 crear archivo .env y configurar
-PORT = 8081
+PORT = 8085
+URL = mongodb+srv://agustinBarbesino:67Sist2187@merndatabase.ydtwq.mongodb.net/myTinerary
