@@ -22,13 +22,7 @@ const updateManyCities = async (req, res, next) => {
     try {
         const city = await City.updateMany(
             { name: req.params.name },
-            { name: req.body.name, 
-              img: req.body.img, 
-              country: req.body.country, 
-              continent: req.body.continent, 
-              description: req.body.description, 
-              currency: req.body.currency,
-              itineraries: req.body.itineraries }
+            { name: req.body.cities }
         );
         return res.status(200).json(city);
     } catch (error) {
