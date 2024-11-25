@@ -4,7 +4,7 @@ import User from "../../models/User.js"
 const signIn = async (req, res) => {
     try {
         await User.findOneAndUpdate(
-            {email: req.body.email},
+            {email: req.body.email || req.user.email},
             {inLine: true}
         )
         return res.status(200).json({

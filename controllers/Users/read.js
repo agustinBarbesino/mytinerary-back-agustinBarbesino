@@ -17,15 +17,15 @@ const allUsers = async (req,res,next) => {
     }        
 }
 
-const userByName = async (req,res,next) => {
+const userByEmail = async (req,res,next) => {
     try {
-        let { name } = req.query
+        let { email } = req.query
         
-        if (!name) {
-            return res.status(400).json({ message: "Name is required" });
+        if (!email) {
+            return res.status(400).json({ message: "Email is required" });
         }
 
-        let user = await User.find(name);
+        let user = await User.find(email);
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
@@ -39,4 +39,4 @@ const userByName = async (req,res,next) => {
     }
 }
 
-export { allUsers, userByName }
+export { allUsers, userByEmail }

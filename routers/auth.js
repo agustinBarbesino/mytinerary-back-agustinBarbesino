@@ -1,5 +1,6 @@
 import { Router } from "express"
 import signIn from "../controllers/Auth/signIn.js"
+import signInGoogle from "../controllers/Auth/signInGoogle.js"
 import signOut from "../controllers/Auth/signOut.js"
 import passport from "passport"
 import generateToken from "../middlewares/generateToken.js"
@@ -12,6 +13,6 @@ const authRouter = Router()
 authRouter.post("/signIn", accountNoExists, isPasswordOk, generateToken, signIn)
 authRouter.post("/signOut", passport.authenticate("jwt", {session: false}), signOut)
 authRouter.get("/signIn/google", passportGoogle.authenticate("google", {scope: ["email", "profile"], session: false}))
-authRouter.get("/signIn/google/callback", passportGoogle.authenticate("google", {session: false}), generateToken, signIn)
+authRouter.get("/signIn/google/callback", passportGoogle.authenticate("google", {session: false}), generateToken, signInGoogle)
 
 export default authRouter

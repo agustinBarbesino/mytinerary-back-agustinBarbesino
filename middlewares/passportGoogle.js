@@ -11,8 +11,8 @@ export default passport.use(new GoogleStrategy({
         let user = await User.findOne({email: profile.emails[0].value})
         if(!user) {
             user = new User({
-                name: profile.displayName,
-                lastName: profile.lastName,
+                name: profile.name.givenName,
+                lastName: profile.name.familyName,
                 email: profile.emails[0].value,
                 password: profile.id,
                 img: profile.photos[0].value,
